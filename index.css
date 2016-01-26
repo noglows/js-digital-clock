@@ -2,7 +2,45 @@ body {
     background-color: #80d4ea;
 }
 
-#clock {
+h1 {
+  font-size: 80px;
+  margin: 0;
+}
+
+#seattle {
+  width: 800px;
+  height: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: courier, monospace;
+  color: white;
+}
+
+#day, #date {
+  font-size: 50px;
+}
+
+#hour, #minute, #second, #time-of-day {
+  font-size: 70px;
+  display: inline-block;
+  padding-top: 20px;
+}
+
+#international-clock {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-family: courier, monospace;
+}
+
+td {
+  width: 250px;
+}
+
+
+/*#clock {
     height: 200px;
     width: 800px;
     margin: auto;
@@ -71,4 +109,4 @@ h1 {
 
 td {
   width: 200px;
-}
+}*/

@@ -37,6 +37,9 @@ var currentTime = function() {
 
   if (hour > 12) {
     hour = hour - 12;
+    time_of_day = "PM"
+  } else {
+    time_of_day = "AM"
   }
 
 
@@ -58,22 +61,45 @@ var currentTime = function() {
   boston_hour = now_utc.getHours() - 5;
   if (boston_hour < 0) {
     boston_hour = 12 + boston_hour;
+    boston_time_of_day = "AM";
   } else if (boston_hour > 12) {
     boston_hour = boston_hour - 12;
+    boston_time_of_day = "PM";
+  } else if (boston_hour == 12){
+    boston_time_of_day = "PM";
+  } else {
+    boston_time_of_day = "AM";
   }
 
   paris_hour = now_utc.getHours() + 1;
   if (paris_hour < 0) {
     paris_hour = 12 + paris_hour;
+    paris_time_of_day = "AM";
   } else if (paris_hour > 12) {
     paris_hour = paris_hour - 12;
+    paris_time_of_day = "PM";
+  } else if (paris_hour == 12) {
+    paris_time_of_day = "PM";
+  } else {
+    paris_time_of_day = "AM";
   }
 
   kyoto_hour = now_utc.getHours() + 9;
   if (kyoto_hour < 0) {
     kyoto_hour = 12 + kyoto_hour;
+    kyoto_time_of_day = "AM";
   } else if (kyoto_hour > 12) {
     kyoto_hour = kyoto_hour - 12;
+    if (kyoto_hour > 12) {
+      kyoto_hour = kyoto_hour - 12;
+      kyoto_time_of_day = "PM";
+    } else {
+      kyoto_time_of_day = "AM";
+    }
+  } else if (kyoto_hour == 12) {
+    kyoto_time_of_day = "PM";
+  } else {
+    kyoto_time_of_day = "AM";
   }
 
   melbourne_hour = now_utc.getHours() + 11;
@@ -81,6 +107,9 @@ var currentTime = function() {
     melbourne_hour = 12 + melbourne_hour;
   } else if (melbourne_hour > 12) {
     melbourne_hour = melbourne_hour - 12;
+    if (melbourne_hour > 12) {
+      melbourne_hour = melbourne_hour - 12;
+    }
   }
 
 
@@ -89,6 +118,7 @@ var currentTime = function() {
   document.getElementById('hour').innerHTML = hour + ":";
   document.getElementById('date').innerHTML = month + " " + day + ", " + year;
   document.getElementById('day').innerHTML = dayWeek;
+  document.getElementById('time-of-day').innerHTML = time_of_day;
 
   document.getElementById('boston-time').innerHTML = boston_hour + ":" + mins + ":" + seconds;
   document.getElementById('paris-time').innerHTML = paris_hour + ":" + mins + ":" + seconds;
@@ -99,6 +129,11 @@ var currentTime = function() {
   document.getElementById('paris-day').innerHTML = paris_day;
   document.getElementById('kyoto-day').innerHTML = kyoto_day;
   document.getElementById('melbourne-day').innerHTML = melbourne_day;
+
+  document.getElementById('boston-time-of-day').innerHTML = boston_time_of_day;
+  document.getElementById('paris-time-of-day').innerHTML = paris_time_of_day;
+  document.getElementById('kyoto-time-of-day').innerHTML = kyoto_time_of_day;
+  // document.getElementById('melbourne-day').innerHTML = melbourne_day;
 };
 
 setInterval(function() { currentTime(); }, 1000);

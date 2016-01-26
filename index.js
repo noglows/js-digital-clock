@@ -1,6 +1,3 @@
-// Your code here
-
-//
 var currentTime = function() {
   var now = new Date();
   var month = now.getMonth();
@@ -10,20 +7,40 @@ var currentTime = function() {
 
   var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
   month = monthNames[month];
-
-  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  dayWeek = dayNames[dayWeek]
+  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   var hour = now.getHours();
 
-  // var bostonHour = hour + 3;
-  // var parisHour = hour + 9;
-  // var kyotoHour = hour + 17;
-  // var melbourneHour = hour + 19;
+  if (hour >= 21) {
+    boston_day = dayNames[dayWeek + 1];
+  } else {
+    boston_day = dayNames[dayWeek]
+  }
+
+  if (hour >= 15) {
+    paris_day = dayNames[dayWeek + 1];
+  } else {
+    paris_day = dayNames[dayWeek]
+  }
+
+  if (hour >= 7) {
+    kyoto_day = dayNames[dayWeek + 1];
+  } else {
+    kyoto_day = dayNames[dayWeek]
+  }
+
+  if (hour >= 5) {
+    melbourne_day = dayNames[dayWeek + 1];
+  } else {
+    melbourne_day = dayNames[dayWeek]
+  }
 
   if (hour > 12) {
     hour = hour - 12;
   }
+
+
+  dayWeek = dayNames[dayWeek];
 
   var mins = now.getMinutes();
   if (mins < 10) {
@@ -36,6 +53,7 @@ var currentTime = function() {
   }
 
   var now_utc = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
 
   boston_hour = now_utc.getHours() - 5;
   if (boston_hour < 0) {
@@ -76,6 +94,11 @@ var currentTime = function() {
   document.getElementById('paris-time').innerHTML = paris_hour + ":" + mins + ":" + seconds;
   document.getElementById('kyoto-time').innerHTML = kyoto_hour + ":" + mins + ":" + seconds;
   document.getElementById('melbourne-time').innerHTML = melbourne_hour + ":" + mins + ":" + seconds;
+
+  document.getElementById('boston-day').innerHTML = boston_day;
+  document.getElementById('paris-day').innerHTML = paris_day;
+  document.getElementById('kyoto-day').innerHTML = kyoto_day;
+  document.getElementById('melbourne-day').innerHTML = melbourne_day;
 };
 
 setInterval(function() { currentTime(); }, 1000);

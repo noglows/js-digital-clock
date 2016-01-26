@@ -8,7 +8,7 @@ body {
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
-    padding-top: 70px;
+    padding-top: 300px;
     font-family: courier, monospace;
     text-align: center;
     color: white;
@@ -32,8 +32,13 @@ body {
   text-align: center;
   color: white;
   font-size: 40px;
-  padding-top: 20px;
+  padding-top: 10px;
   margin: auto;
+  font-family: courier, monospace;
+}
+
+h1 {
+  font-size: 70px;
   font-family: courier, monospace;
 }
 
@@ -55,4 +60,15 @@ body {
   width: 250px;
   height: 200px;
   float: right;
+}
+
+#international-clock {
+  padding-top: 200px;
+  width: 800px;
+  text-align: center;
+  margin:auto;
+}
+
+td {
+  width: 200px;
 }
